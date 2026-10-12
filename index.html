@@ -15,7 +15,7 @@
       --blue: #1688ff;
       --blue2: #4eb6ff;
       --line: rgba(180, 202, 236, .2);
-      --site-max: 1140px;
+      --site-max: 1100px; /* 전체 컨테이너 정렬 폭 통일 */
       --nav-height: 76px;
       --ease: cubic-bezier(.2,.75,.25,1);
     }
@@ -47,7 +47,7 @@
     button { font: inherit; cursor: pointer; }
     ::selection { background: var(--blue); color: white; }
 
-    /* Header */
+    /* Header — 본문 영역과 동일 수직 라인 정렬 */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -60,7 +60,7 @@
     }
     
     .nav-inner {
-      width: min(var(--site-max), 90%);
+      width: min(var(--site-max), calc(100% - 48px));
       height: 100%;
       margin: 0 auto;
       display: flex;
@@ -111,7 +111,7 @@
 
     main { padding-top: var(--nav-height); width: 100%; }
     .wrap {
-      width: min(var(--site-max), 90%);
+      width: min(var(--site-max), calc(100% - 48px));
       margin: 0 auto !important;
     }
     
@@ -130,7 +130,7 @@
     }
 
     h1 {
-      font-size: clamp(38px, 4.5vw, 64px);
+      font-size: clamp(36px, 4.2vw, 58px);
       line-height: 1.1;
       letter-spacing: -.04em;
       margin: 12px 0 20px;
@@ -166,27 +166,23 @@
     .blue { color: var(--blue2); }
 
     /* =========================================================
-       [오류 수정] 첫 페이지 넓어짐 및 벌어짐 완벽 고정 CSS
+       [수정] 상단-본문 레이아웃 수직 라인 통일 & 프로필 축소
        ========================================================= */
     .hero {
       padding: 60px 0;
       min-height: calc(85vh - var(--nav-height));
       display: flex;
       align-items: center;
-      justify-content: center;
-      position: relative;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 320px; /* 텍스트와 사진 폭 고정 */
+      grid-template-columns: 1fr 270px; /* 프로필 사진 너비를 270px로 축소 및 고정 */
       align-items: center;
-      gap: 40px; /* 벌어지지 않게 고정 간격 적용 */
+      gap: 48px;
       width: 100%;
-      max-width: 960px; /* 화면이 커져도 사이가 멀어지지 않도록 최대 폭 제한 */
-      margin: 0 auto;
     }
     .hero .tagline {
-      font-size: clamp(16px, 1.8vw, 20px);
+      font-size: clamp(15px, 1.6vw, 19px);
       color: #dbe4f2;
       line-height: 1.6;
       margin-bottom: 28px;
@@ -221,11 +217,12 @@
     .btn.primary { background: var(--blue); border-color: var(--blue); color: white; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22,136,255,.25); }
 
+    /* 프로필 상자 스케일 최적화 */
     .portrait-wrap {
       position: relative;
       width: 100%;
-      max-width: 320px;
-      justify-self: center;
+      max-width: 270px; /* 사진 박스 크기 축소 */
+      justify-self: end;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -236,7 +233,7 @@
     .portrait-wrap:before {
       content: "";
       position: absolute;
-      inset: -12px;
+      inset: -10px;
       border: 1px solid rgba(48,151,255,.35);
       border-radius: 14px;
       z-index: -1;
@@ -245,16 +242,16 @@
     .portrait {
       width: 100%;
       height: auto;
-      max-height: 440px;
-      object-fit: contain;
+      max-height: 380px;
+      object-fit: cover;
       display: block;
     }
     .portrait-label {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      padding: 24px 16px 12px;
+      padding: 20px 14px 10px;
       background: linear-gradient(transparent, rgba(3,7,14,.92));
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: .15em;
       color: white;
       font-weight: 700;
