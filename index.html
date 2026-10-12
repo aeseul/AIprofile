@@ -415,16 +415,30 @@
       opacity: 1;
     }
 
-    /* ★ 아크테릭스 브랜드 카드 최적화 ★ */
+    /* ★ 아크테릭스 화려한 네온 브랜드 카드 디자인 ★ */
     .card.brand-highlight {
-      background: linear-gradient(145deg, rgba(28, 43, 68, 0.95), rgba(13, 20, 32, 0.9));
-      border: 1.5px solid rgba(78, 182, 255, 0.5);
-      box-shadow: 0 0 25px rgba(22, 136, 255, 0.18);
+      background: linear-gradient(135deg, rgba(16, 38, 70, 0.95), rgba(11, 23, 44, 0.95), rgba(8, 15, 28, 0.98));
+      border: 1.5px solid rgba(56, 189, 248, 0.6);
+      box-shadow: 
+        0 0 35px rgba(56, 189, 248, 0.25),
+        inset 0 0 20px rgba(22, 136, 255, 0.15);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       z-index: 1;
+      animation: neonCardGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes neonCardGlow {
+      0% {
+        border-color: rgba(56, 189, 248, 0.5);
+        box-shadow: 0 0 25px rgba(56, 189, 248, 0.2), inset 0 0 15px rgba(22, 136, 255, 0.1);
+      }
+      100% {
+        border-color: rgba(78, 182, 255, 0.9);
+        box-shadow: 0 0 45px rgba(56, 189, 248, 0.4), inset 0 0 30px rgba(56, 189, 248, 0.25);
+      }
     }
 
     .brand-content {
@@ -432,13 +446,13 @@
       z-index: 2;
     }
 
-    /* 하단 로고 래퍼 스타일 */
+    /* 확대된 대형 로고 및 네온 글로우 애니메이션 */
     .arcteryx-bg-logo-wrap {
       position: absolute;
-      right: 18px;
-      bottom: 12px;
-      width: 170px;
-      height: 110px;
+      right: 10px;
+      bottom: 0px;
+      width: 280px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -450,15 +464,27 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      opacity: 0.4;
-      filter: drop-shadow(0 0 10px rgba(78, 182, 255, 0.5));
-      transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+      opacity: 0.75;
+      filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8)) drop-shadow(0 0 30px rgba(22, 136, 255, 0.6)) brightness(1.2);
+      transition: all 0.5s var(--ease-out);
+      animation: neonPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      0% {
+        opacity: 0.65;
+        filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 25px rgba(22, 136, 255, 0.4)) brightness(1.1);
+      }
+      100% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 22px rgba(56, 189, 248, 1)) drop-shadow(0 0 45px rgba(78, 182, 255, 0.8)) brightness(1.3);
+      }
     }
 
     .card.brand-highlight:hover .arcteryx-bg-logo-wrap img {
-      opacity: 0.8;
-      transform: scale(1.06) rotate(-2deg);
-      filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.9));
+      opacity: 1;
+      transform: scale(1.08) rotate(-1deg);
+      filter: drop-shadow(0 0 30px rgba(56, 189, 248, 1)) drop-shadow(0 0 60px rgba(78, 182, 255, 1)) brightness(1.4);
     }
 
     .arcteryx-fallback-logo {
@@ -466,22 +492,24 @@
       flex-direction: column;
       align-items: flex-end;
       justify-content: center;
-      opacity: 0.35;
+      opacity: 0.7;
       transition: all 0.4s ease;
+      animation: neonPulse 3s ease-in-out infinite alternate;
     }
     .arcteryx-fallback-logo .brand-mark {
-      font-size: 24px;
+      font-size: 38px;
       font-weight: 900;
       letter-spacing: 0.15em;
       color: #38bdf8;
       text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 0 0 30px rgba(22, 136, 255, 0.6);
     }
     .arcteryx-fallback-logo .brand-text {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.25em;
       color: #4eb6ff;
+      text-shadow: 0 0 10px rgba(78, 182, 255, 0.8);
     }
 
     .intro-grid, .skills-grid {
@@ -913,7 +941,7 @@
               </div>
             </div>
 
-            <!-- ak-logo.jpeg 이미지 불러오기 (깃허브 리포지토리 루트의 ak-logo.jpeg 연동) -->
+            <!-- 확대된 대형 네온 로고 및 스마트 롤백 -->
             <div class="arcteryx-bg-logo-wrap">
               <img src="./ak-logo.jpeg" alt="아크테릭스 브랜드 로고" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'arcteryx-fallback-logo\'><div class=\'brand-mark\'>ARC\'TERYX</div><div class=\'brand-text\'>EQUIPMENT</div></div>';">
             </div>
