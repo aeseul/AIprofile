@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="키네시오 스포츠 테이핑 전문가 과정 및 청야체전 의무지원 활동 — 장애슬 포트폴리오">
+  <title>스포츠 테이핑 연수 및 의무지원 활동 — 장애슬</title>
+  <style>
+    :root {
+      --bg: #080b12;
+      --panel: #101622;
+      --ink: #f5f7fb;
+      --muted: #a5afc1;
+      --blue: #1688ff;
+      --blue2: #4eb6ff;
+      --cyan: #38bdf8;
+      --line: rgba(180, 202, 236, .2);
+      --site-max: 1100px;
+      --nav-height: 76px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.65;
+      letter-spacing: -.02em;
+      overflow-x: hidden;
+      word-break: keep-all; /* 문장 잘림 방지 */
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 85% 10%, rgba(22, 136, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 10% 50%, rgba(56, 189, 248, 0.12), transparent 40%);
+      animation: auraPulse 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes auraPulse {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.05) translate(-10px, 15px); opacity: 1; }
+    }
+
+    .mouse-glow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(78, 182, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    ::selection { background: var(--blue); color: white; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      background: rgba(8, 11, 18, .88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .nav-inner {
+      width: min(var(--site-max), calc(100% - 48px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+    .wordmark small {
+      display: block;
+      color: var(--blue2);
+      font-size: 10px;
+      letter-spacing: .18em;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue2);
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: rgba(16, 22, 34, .7);
+      transition: all .25s ease;
+      white-space: nowrap;
+    }
+    .back-btn:hover {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+      box-shadow: 0 0 15px rgba(22, 136, 255, 0.4);
+    }
+
+    main { padding-top: var(--nav-height); width: 100%; }
+    .wrap {
+      width: min(var(--site-max), calc(100% - 48px));
+      margin: 0 auto !important;
+    }
+    
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 3.8vw, 46px);
+      line-height: 1.25;
+      letter-spacing: -.03em;
+      margin: 0 0 16px;
+      font-weight: 850;
+      word-break: keep-all;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #c5cedc;
+      margin-bottom: 32px;
+      line-height: 1.65;
+      max-width: 850px;
+      word-break: keep-all;
+    }
+
+    /* 카드 레이아웃 */
+    .card {
+      background: linear-gradient(145deg, rgba(20,29,44,.95), rgba(12,17,27,.85));
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      transition: transform .4s var(--ease-out), border-color .4s ease, box-shadow .4s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(78, 182, 255, 0.6);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 20px rgba(22, 136, 255, 0.2);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: var(--blue2);
+      font-weight: 800;
+      letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+
+    .info-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      word-break: keep-all;
+    }
+
+    h2.section-title {
+      font-size: 22px;
+      margin: 0 0 20px;
+      color: white;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #c5cedc;
+    }
+    li { 
+      margin-bottom: 10px; 
+      font-size: 15px; 
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    /* 사진 박스 디자인 및 테두리 효과 */
+    .img-wrap {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid rgba(78, 182, 255, 0.4);
+      background: #101622;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      transition: transform .35s var(--ease-out), border-color .35s ease, box-shadow .35s ease;
+    }
+    .img-wrap:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--cyan);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.35);
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 240px;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      padding: 12px 14px;
+      background: rgba(16, 22, 34, 0.94);
+      font-size: 13px;
+      font-weight: 700;
+      color: #e0e8f5;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: #d8ecff;
+      background: rgba(22,136,255,.1);
+      margin-right: 6px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+    .tag:hover {
+      border-color: var(--blue2);
+      background: rgba(22, 136, 255, 0.2);
+      color: white;
+    }
+
+    /* 스크롤 애니메이션 클래스 */
+    .reveal-unfold {
+      opacity: 0;
+      transform: perspective(1000px) rotateX(20deg) translateY(50px) scale(0.92);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal-unfold.active {
+      opacity: 1;
+      transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.88) translateY(30px);
+      transition: opacity 0.65s var(--ease-back), transform 0.65s var(--ease-back);
+    }
+    .reveal-zoom.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    footer {
+      padding: 32px 0;
+      color: #68758b;
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      section { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mouse-glow" id="mouseGlow"></div>
+
+  <header>
+    <div class="nav-inner">
+      <a class="wordmark" href="./index.html">장애슬<small>JANG AE SEUL</small></a>
+      <a class="back-btn" href="./index.html#credentials">← 자격·수상 목록으로 돌아가기</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 프로젝트 개요 -->
+    <section>
+      <div class="wrap">
+        <div class="kicker">SPECIAL CERTIFICATION & SUPPORT</div>
+        <h1>키네시오 스포츠 테이핑 연수<br>& 청야체전 4일 의무지원 활동</h1>
+        <p class="subtitle">
+          건국대학교에서 키네시오 스포츠 테이핑 전문 연수를 수료하여 '대한스포츠 테이핑 전문가 2급' 자격을 취득하였으며, 이를 바탕으로 교내 메가 체육대회인 '청야체전' 동안 4일간 선수단 의무지원 활동을 성공적으로 완수했습니다.
+        </p>
+        
+        <div class="card grid-3 reveal-unfold">
+          <div>
+            <div class="info-label">취득 자격</div>
+            <div class="info-val">대한스포츠 테이핑 전문가 2급</div>
+          </div>
+          <div>
+            <div class="info-label">수료 교육기관</div>
+            <div class="info-val">건국대학교 스포츠 테이핑 연수 과정</div>
+          </div>
+          <div>
+            <div class="info-label">의무지원 현장</div>
+            <div class="info-val">청야체전 4일간 (풋살·족구·농구 종목)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 주요 수행 내용 -->
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">활동 상세 내용 및 전문성</h2>
+        <div class="grid-3">
+          <article class="card reveal-unfold delay-1">
+            <div class="info-label">01 / PROFESSIONAL TRAINING</div>
+            <h3 style="color:white; margin: 8px 0 14px;">건국대학교 전문 연수 수료</h3>
+            <ul>
+              <li>인체 해부학적 근육 및 관절 구조 이해</li>
+              <li>테이프 장력 및 키네시오 테이핑 테크닉 실습</li>
+              <li>스포츠 부상 방지 및 응급 처치 역량 함양</li>
+            </ul>
+          </article>
+
+          <article class="card reveal-unfold delay-2">
+            <div class="info-label">02 / QUALIFICATION</div>
+            <h3 style="color:white; margin: 8px 0 14px;">전문가 2급 자격 취득</h3>
+            <ul>
+              <li>대한스포츠 테이핑 전문가 2급 공식 자격 취득</li>
+              <li>스포츠 현장에서 즉각 활용 가능한 실무 스킬 검증</li>
+              <li>부상 예방 및 컨디셔닝 지원 기반 마련</li>
+            </ul>
+          </article>
+
+          <article class="card reveal-unfold delay-3">
+            <div class="info-label">03 / FIELD SUPPORT</div>
+            <h3 style="color:white; margin: 8px 0 14px;">청야체전 4일 의무지원 활동</h3>
+            <ul>
+              <li>체전 주요 구기 종목(풋살, 족구, 농구) 선수단 밀착 지원</li>
+              <li>부상 위험이 높은 관절 및 근육 부위 맞춤 테이핑 적용</li>
+              <li>4일간의 현장 운영을 통한 실전 응급 대응 및 소통 역량 강화</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- [활동 사진 3종 영역] -->
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">활동 증빙 및 현장 사진</h2>
+        <p class="subtitle" style="margin-bottom: 24px;">전문 연수 과정 수료증, 팀원과 함께한 실습 현장, 그리고 체전 의무지원 현장 사진입니다.</p>
+        
+        <div class="grid-3">
+          <div class="img-wrap reveal-zoom delay-1">
+            <img src="./1. kine.jpg" alt="키네시오 테이핑 연수 활동 사진" onerror="this.onerror=null; this.src='./kine.jpg';">
+            <div class="img-caption">1. kine.jpg<br>(테이핑 연수 실습 과정)</div>
+          </div>
+          <div class="img-wrap reveal-zoom delay-2">
+            <img src="./2. kine-team.jpg" alt="팀원들과 함께한 테이핑 활동 사진" onerror="this.onerror=null; this.src='./kine-team.jpg';">
+            <div class="img-caption">2. kine-team.jpg<br>(팀원 협업 및 실습 현장)</div>
+          </div>
+          <div class="img-wrap reveal-zoom delay-3">
+            <img src="./3. kine-certificate.jpg" alt="대한스포츠 테이핑 전문가 2급 자격증" onerror="this.onerror=null; this.src='./kine-certificate.jpg';">
+            <div class="img-caption">3. kine-certificate.jpg<br>(자격증 취득 수료증)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 활용 역량 키워드 -->
+    <section>
+      <div class="wrap">
+        <div class="card reveal-unfold">
+          <h2 class="section-title">핵심 역량 키워드</h2>
+          <div>
+            <span class="tag">대한스포츠 테이핑 전문가 2급</span>
+            <span class="tag">건국대학교 연수 수료</span>
+            <span class="tag">청야체전 의무지원</span>
+            <span class="tag">풋살·족구·농구 현장 지원</span>
+            <span class="tag">스포츠 부상 방지 및 응급처치</span>
+            <span class="tag">선수단 컨디셔닝</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>장애슬 · SPORTS INDUSTRY PORTFOLIO</span>
+      <span>SEOKYEONG UNIVERSITY</span>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 마우스 글로우 추적 효과
+      const mouseGlow = document.getElementById('mouseGlow');
+      window.addEventListener('mousemove', (e) => {
+        mouseGlow.style.left = `${e.clientX}px`;
+        mouseGlow.style.top = `${e.clientY}px`;
+      }, { passive: true });
+
+      // 스크롤 애니메이션 옵저버
+      const observerOptions = { root: null, threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal-unfold, .reveal-zoom').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
