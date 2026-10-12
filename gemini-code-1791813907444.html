@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="SPARK 2기 청야체전 메가 스포츠 이벤트 — 장애슬 포트폴리오">
+  <title>SPARK 2기 청야체전 메가 스포츠 이벤트 — 장애슬</title>
+  <style>
+    :root {
+      --bg: #080b12;
+      --panel: #101622;
+      --ink: #f5f7fb;
+      --muted: #a5afc1;
+      --blue: #1688ff;
+      --blue2: #4eb6ff;
+      --line: rgba(180, 202, 236, .2);
+      --site-max: 1100px;
+      --nav-height: 76px;
+    }
+    
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.65;
+      letter-spacing: -.02em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background: 
+        radial-gradient(ellipse at 88% 4%, rgba(0, 105, 255, .15), transparent 32%),
+        radial-gradient(ellipse at 5% 55%, rgba(0, 105, 255, .08), transparent 34%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    ::selection { background: var(--blue); color: white; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      background: rgba(8, 11, 18, .92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .nav-inner {
+      width: min(var(--site-max), calc(100% - 48px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+    .wordmark small {
+      display: block;
+      color: var(--blue2);
+      font-size: 10px;
+      letter-spacing: .18em;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue2);
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: rgba(16, 22, 34, .7);
+      transition: all .25s ease;
+    }
+    .back-btn:hover {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    main { padding-top: var(--nav-height); width: 100%; }
+    .wrap {
+      width: min(var(--site-max), calc(100% - 48px));
+      margin: 0 auto !important;
+    }
+    
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 3.8vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -.03em;
+      margin: 0 0 16px;
+      font-weight: 850;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #c5cedc;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    /* 카드 레이아웃 */
+    .card {
+      background: linear-gradient(145deg, rgba(20,29,44,.95), rgba(12,17,27,.85));
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: var(--blue2);
+      font-weight: 800;
+      letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+
+    .info-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+    }
+
+    h2.section-title {
+      font-size: 22px;
+      margin: 0 0 20px;
+      color: white;
+      font-weight: 800;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #c5cedc;
+    }
+    li { margin-bottom: 10px; font-size: 15px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: #d8ecff;
+      background: rgba(22,136,255,.1);
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: #68758b;
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      section { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <a class="wordmark" href="./index.html">장애슬<small>JANG AE SEUL</small></a>
+      <a class="back-btn" href="./index.html#projects">← 포트폴리오로 돌아가기</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 프로젝트 개요 -->
+    <section>
+      <div class="wrap">
+        <div class="kicker">PROJECT 03 · FEATURED PROJECT</div>
+        <h1>SPARK 2기<br>청야체전 메가 스포츠 이벤트</h1>
+        <p class="subtitle">서경대학교 교내 메가 이벤트 '청야체전'의 미디어 및 홍보 총괄 가이드라인 수립, 경기 미디어 콘텐츠 실시간 제작 및 현장 운영 프로젝트</p>
+        
+        <div class="card grid-3">
+          <div>
+            <div class="info-label">역할</div>
+            <div class="info-val">콘텐츠 기획 / 홍보 가이드 수립</div>
+          </div>
+          <div>
+            <div class="info-label">소속</div>
+            <div class="info-val">스포츠산업 기획 동아리 SPARK 2기</div>
+          </div>
+          <div>
+            <div class="info-label">핵심 성과</div>
+            <div class="info-val">실시간 경기 라인업·MVP·일정 콘텐츠 운영</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 주요 수행 내용 -->
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">주요 수행 내용</h2>
+        
+        <div class="grid-2">
+          <article class="card">
+            <div class="info-label">01 / GUIDELINE</div>
+            <h3 style="color:white; margin: 8px 0 14px;">기획 및 촬영 가이드라인 수립</h3>
+            <ul>
+              <li>체전 현장의 역동성을 전달하기 위한 미디어 가이드라인 작성</li>
+              <li>현장 촬영 표준화 규격 및 브랜딩 프레임 제작</li>
+              <li>원활한 실시간 업로드를 위한 일별 콘텐츠 릴리즈 프로세스 구축</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="info-label">02 / CONTENT CREATION</div>
+            <h3 style="color:white; margin: 8px 0 14px;">실시간 미디어 콘텐츠 발행</h3>
+            <ul>
+              <li>일자별 경기 일정 및 토너먼트 대진표 카드뉴스 제작</li>
+              <li>경기 직후 주요 선수 MVP 지정 및 맞춤 포스터 제작</li>
+              <li>선수단 출전 라인업 및 경기 결과 속보 콘텐츠 실시간 카드뉴스 업로드</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 핵심 역량 및 태그 -->
+    <section>
+      <div class="wrap">
+        <div class="card">
+          <h2 class="section-title">프로젝트 활용 역량</h2>
+          <div>
+            <span class="tag">스포츠 이벤트 기획</span>
+            <span class="tag">실시간 미디어 운영</span>
+            <span class="tag">카드뉴스 디자인</span>
+            <span class="tag">현장 가이드라인 작성</span>
+            <span class="tag">스토리텔링 콘텐츠</span>
+            <span class="tag">SPARK 2기</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>장애슬 · SPORTS INDUSTRY PORTFOLIO</span>
+      <span>SEOKYEONG UNIVERSITY</span>
+    </div>
+  </footer>
+
+</body>
+</html>
