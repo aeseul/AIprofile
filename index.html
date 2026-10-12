@@ -166,24 +166,27 @@
     .blue { color: var(--blue2); }
 
     /* =========================================================
-       [수정 완료] 히어로 섹션 & 프로필 원본 사진 비율 최적화
+       [오류 수정] 첫 페이지 넓어짐 및 벌어짐 완벽 고정 CSS
        ========================================================= */
     .hero {
       padding: 60px 0;
       min-height: calc(85vh - var(--nav-height));
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr 320px; /* 텍스트와 사진 폭 고정 */
       align-items: center;
-      gap: 5vw;
+      gap: 40px; /* 벌어지지 않게 고정 간격 적용 */
       width: 100%;
+      max-width: 960px; /* 화면이 커져도 사이가 멀어지지 않도록 최대 폭 제한 */
+      margin: 0 auto;
     }
     .hero .tagline {
-      font-size: clamp(16px, 1.8vw, 22px);
+      font-size: clamp(16px, 1.8vw, 20px);
       color: #dbe4f2;
       line-height: 1.6;
       margin-bottom: 28px;
@@ -218,12 +221,11 @@
     .btn.primary { background: var(--blue); border-color: var(--blue); color: white; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22,136,255,.25); }
 
-    /* 원본 비율 보존 및 적절한 스케일 적용 */
     .portrait-wrap {
       position: relative;
       width: 100%;
-      max-width: 360px;
-      justify-self: end;
+      max-width: 320px;
+      justify-self: center;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -243,8 +245,8 @@
     .portrait {
       width: 100%;
       height: auto;
-      max-height: 480px;
-      object-fit: contain; /* 사진 원본 크기를 잘라내지 않고 그대로 유지 */
+      max-height: 440px;
+      object-fit: contain;
       display: block;
     }
     .portrait-label {
@@ -426,7 +428,7 @@
     }
 
     /* 반응형 레이아웃 */
-    @media (max-width: 1024px) {
+    @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 32px; }
       .portrait-wrap { justify-self: center; margin-top: 10px; }
       .section-head { grid-template-columns: 1fr; gap: 16px; }
@@ -477,7 +479,6 @@
   </header>
 
   <main>
-    <!-- [수정] 히어로 섹션 & 원본 크기 최적화된 프로필 -->
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div>
@@ -501,7 +502,6 @@
       </div>
     </section>
 
-    <!-- 이하 작성하셨던 기존 콘텐츠는 100% 동일하게 유지됩니다. -->
     <section id="about">
       <div class="wrap">
         <div class="section-head">
