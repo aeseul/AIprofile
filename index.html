@@ -32,10 +32,9 @@
       line-height: 1.65;
       letter-spacing: -.02em;
       overflow-x: hidden;
-      word-break: keep-all; /* 단어 단위 자연스러운 줄바꿈 */
+      word-break: keep-all;
     }
 
-    /* 은은한 네온 오로라 배경 애니메이션 */
     body::before {
       content: "";
       position: fixed;
@@ -55,7 +54,6 @@
       100% { transform: scale(0.98) translate(15px, -10px); opacity: 0.85; }
     }
 
-    /* 마우스 은은한 반응형 빛 글로우 */
     .mouse-glow {
       position: fixed;
       width: 380px;
@@ -72,7 +70,6 @@
     button { font: inherit; cursor: pointer; }
     ::selection { background: var(--blue); color: white; }
 
-    /* Header & Nav */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -230,7 +227,6 @@
     .muted { color: var(--muted); }
     .blue { color: var(--blue2); }
 
-    /* 히어로 섹션 */
     .hero {
       padding: 70px 0;
       min-height: calc(88vh - var(--nav-height));
@@ -315,7 +311,6 @@
       box-shadow: 0 10px 25px rgba(22,136,255,.45); 
     }
 
-    /* 프로필 3D 플로팅 효과 */
     .portrait-wrap {
       position: relative;
       width: 100%;
@@ -383,7 +378,6 @@
       word-break: keep-all;
     }
 
-    /* 입체 카드 디자인 및 빛 흐름 효과 */
     .card {
       background: linear-gradient(145deg, rgba(20,29,44,.95), rgba(12,17,27,.85));
       border: 1px solid var(--line);
@@ -421,7 +415,7 @@
       opacity: 1;
     }
 
-    /* ★ 아크테릭스 브랜드 디자인 카드 & 배경 로고 오버레이 ★ */
+    /* ★ 아크테릭스 카드 및 백그라운드 로고 최적화 ★ */
     .card.brand-highlight {
       background: linear-gradient(145deg, rgba(28, 43, 68, 0.95), rgba(13, 20, 32, 0.9));
       border: 1.5px solid rgba(78, 182, 255, 0.5);
@@ -438,26 +432,31 @@
       z-index: 2;
     }
 
-    /* 카드 하단 여백을 디자인적으로 가득 채워주는 배경 로고 */
-    .arcteryx-bg-logo {
+    .arcteryx-bg-logo-wrap {
       position: absolute;
-      right: 12px;
+      right: 16px;
       bottom: 12px;
-      width: 180px;
+      width: 160px;
       height: 110px;
-      object-fit: contain;
-      opacity: 0.35;
-      filter: drop-shadow(0 0 12px rgba(78, 182, 255, 0.6)) brightness(1.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.3;
       pointer-events: none;
       transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
       z-index: 1;
-      border-radius: 8px;
     }
 
-    .card.brand-highlight:hover .arcteryx-bg-logo {
+    .card.brand-highlight:hover .arcteryx-bg-logo-wrap {
       opacity: 0.6;
-      transform: scale(1.05) rotate(-2deg);
-      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8)) brightness(1.4);
+      transform: scale(1.08) rotate(-2deg);
+      filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8));
+    }
+
+    .arcteryx-bg-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .intro-grid, .skills-grid {
@@ -492,7 +491,6 @@
       color: white;
     }
 
-    /* 경력 그리드 */
     .experience-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
@@ -539,7 +537,6 @@
       padding-bottom: 10px;
     }
 
-    /* Part 03. 활동 필터 탭 & 정돈된 Grid */
     .filter-bar {
       display: flex;
       gap: 10px;
@@ -586,7 +583,6 @@
       display: none;
     }
 
-    /* 3대 핵심 프로젝트 숏컷 패널 */
     .project-shortcut-panel {
       background: linear-gradient(135deg, rgba(22, 136, 255, 0.1), rgba(8, 11, 18, 0.8));
       border: 1px solid rgba(78, 182, 255, 0.3);
@@ -712,7 +708,6 @@
       align-items: center;
     }
 
-    /* 스크롤 애니메이션 클래스 */
     .reveal-unfold {
       opacity: 0;
       transform: perspective(1000px) rotateX(25deg) translateY(60px) scale(0.9);
@@ -751,7 +746,6 @@
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
 
-    /* 반응형 레이아웃 */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 32px; }
       .portrait-wrap { justify-self: center; margin-top: 10px; }
@@ -786,7 +780,6 @@
 </head>
 <body>
 
-  <!-- 마우스 은은한 반응형 빛 글로우 -->
   <div class="mouse-glow" id="mouseGlow"></div>
 
   <header id="siteHeader">
@@ -827,7 +820,7 @@
           </div>
         </div>
         <div class="portrait-wrap reveal-zoom delay-2">
-          <img class="portrait" src="./profile.jpg" alt="장애슬 프로필 사진" onerror="this.onerror=null; this.alt='profile.jpg 파일 확인 필요';">
+          <img class="portrait" src="./profile.jpg" alt="장애슬 프로필 사진" onerror="this.style.display='none';">
           <div class="portrait-label">JANG AE SEUL · PROFILE</div>
         </div>
       </div>
@@ -878,7 +871,7 @@
         </div>
 
         <div class="experience-grid">
-          <!-- ★ 핵심 아크테릭스 브랜드 경험 카드 (+ 로고 이미지 수정) ★ -->
+          <!-- ★ 핵심 아크테릭스 브랜드 경험 카드 (SVG 로고 내장으로 이미지 누락 시에도 안전) ★ -->
           <article class="card brand-highlight reveal-unfold delay-1">
             <div class="brand-content">
               <div class="card-no">FEATURED BRAND EXPERIENCE</div>
@@ -895,8 +888,10 @@
               </div>
             </div>
 
-            <!-- ak-logo.jpeg 이미지 적용 및 로드 오류 방지 처리 -->
-            <img class="arcteryx-bg-logo" src="./ak-logo.jpeg" alt="아크테릭스 브랜드 로고" onerror="this.onerror=null; this.src='ak-logo.jpeg';">
+            <!-- 파일 누락 시 고화질 SVG 로고 자동 전환 처리 -->
+            <div class="arcteryx-bg-logo-wrap">
+              <img src="./ak-logo.jpeg" alt="아크테릭스 브랜드 로고" onerror="this.onerror=null; this.parentElement.innerHTML='<svg viewBox=\'0 0 100 80\' width=\'100%\' height=\'100%\' fill=\'%2338bdf8\'><path d=\'M50 5 L35 25 L45 25 L30 50 L42 50 L20 75 L80 75 L58 50 L70 50 L55 25 L65 25 Z\' opacity=\'0.8\'/></svg>';">
+            </div>
           </article>
 
           <!-- 아르바이트 경력 4종 -->
@@ -956,7 +951,6 @@
           <p>구단 산학협력, 기획 동아리, 스포츠 현장 봉사 및 지도 경험까지 다채로운 실무와 연계 활동을 쌓아왔습니다.</p>
         </div>
 
-        <!-- 3대 메인 프로젝트 숏컷 -->
         <div class="project-shortcut-panel reveal-slide-up">
           <div class="shortcut-item">
             <div>
@@ -984,7 +978,6 @@
           </div>
         </div>
 
-        <!-- 카테고리 필터 버튼 -->
         <div class="filter-bar reveal-slide-up">
           <button class="filter-btn active" data-filter="all">전체보기</button>
           <button class="filter-btn" data-filter="club">구단 · 산학 프로젝트</button>
@@ -1212,7 +1205,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. 헤더 스크롤 반응형
       const siteHeader = document.getElementById('siteHeader');
       const menuBtn = document.getElementById('menuBtn');
       const navLinks = document.getElementById('navLinks');
@@ -1231,14 +1223,12 @@
         });
       });
 
-      // 2. 마우스 은은한 글로우 따라다니기
       const mouseGlow = document.getElementById('mouseGlow');
       window.addEventListener('mousemove', (e) => {
         mouseGlow.style.left = `${e.clientX}px`;
         mouseGlow.style.top = `${e.clientY}px`;
       }, { passive: true });
 
-      // 3. Intersection Observer 스크롤 애니메이션
       const observerOptions = {
         root: null,
         rootMargin: '0px 0px -60px 0px',
@@ -1256,7 +1246,6 @@
 
       document.querySelectorAll('.reveal-unfold, .reveal-zoom, .reveal-slide-up').forEach(el => revealObserver.observe(el));
 
-      // 4. PART 03. 카테고리 필터 기능
       const filterBtns = document.querySelectorAll('.filter-btn');
       const activities = document.querySelectorAll('.activity');
 
@@ -1277,7 +1266,6 @@
         });
       });
 
-      // 5. 스크롤 활성 헤더 네비게이션
       window.addEventListener('scroll', () => {
         if (window.scrollY > 40) {
           siteHeader.classList.add('scrolled');
