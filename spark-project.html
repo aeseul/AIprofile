@@ -14,9 +14,12 @@
       --muted: #a5afc1;
       --blue: #1688ff;
       --blue2: #4eb6ff;
+      --cyan: #38bdf8;
       --line: rgba(180, 202, 236, .2);
       --site-max: 1100px;
       --nav-height: 76px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
     * { box-sizing: border-box; }
@@ -29,18 +32,35 @@
       line-height: 1.65;
       letter-spacing: -.02em;
       overflow-x: hidden;
-      word-break: keep-all; /* 단어 단위 자연스러운 줄바꿈으로 문장 끊김 방지 */
+      word-break: keep-all; /* 단어 단위 자연스러운 줄바꿈 */
     }
 
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
+      inset: -20%;
       pointer-events: none;
       z-index: -1;
       background: 
-        radial-gradient(ellipse at 88% 4%, rgba(0, 105, 255, .15), transparent 32%),
-        radial-gradient(ellipse at 5% 55%, rgba(0, 105, 255, .08), transparent 34%);
+        radial-gradient(circle at 85% 10%, rgba(22, 136, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 10% 50%, rgba(56, 189, 248, 0.12), transparent 40%);
+      animation: auraPulse 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes auraPulse {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.05) translate(-10px, 15px); opacity: 1; }
+    }
+
+    .mouse-glow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(78, 182, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -53,7 +73,7 @@
       top: 0; left: 0; right: 0;
       height: var(--nav-height);
       z-index: 1000;
-      background: rgba(8, 11, 18, .92);
+      background: rgba(8, 11, 18, .88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
@@ -99,6 +119,7 @@
       background: var(--blue);
       color: white;
       border-color: var(--blue);
+      box-shadow: 0 0 15px rgba(22, 136, 255, 0.4);
     }
 
     main { padding-top: var(--nav-height); width: 100%; }
@@ -146,12 +167,12 @@
       border-radius: 12px;
       padding: 32px;
       margin-bottom: 24px;
+      transition: transform .4s var(--ease-out), border-color .4s ease, box-shadow .4s ease;
     }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(78, 182, 255, 0.6);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 20px rgba(22, 136, 255, 0.2);
     }
 
     .grid-3 {
@@ -209,12 +230,12 @@
       border: 1.5px solid rgba(78, 182, 255, 0.4);
       background: #101622;
       box-shadow: 0 8px 24px rgba(0,0,0,.4);
-      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      transition: transform .35s var(--ease-out), border-color .35s ease, box-shadow .35s ease;
     }
     .img-wrap:hover {
-      transform: translateY(-4px);
-      border-color: rgba(78, 182, 255, 0.8);
-      box-shadow: 0 12px 28px rgba(22, 136, 255, 0.25);
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--cyan);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.35);
     }
     .img-wrap img {
       width: 100%;
@@ -224,7 +245,7 @@
     }
     .img-caption {
       padding: 12px 14px;
-      background: rgba(16, 22, 34, 0.92);
+      background: rgba(16, 22, 34, 0.94);
       font-size: 13px;
       font-weight: 700;
       color: #e0e8f5;
@@ -250,7 +271,39 @@
       margin-bottom: 8px;
       font-weight: 600;
       white-space: nowrap;
+      transition: all 0.3s ease;
     }
+    .tag:hover {
+      border-color: var(--blue2);
+      background: rgba(22, 136, 255, 0.2);
+      color: white;
+    }
+
+    /* 스크롤 애니메이션 클래스 */
+    .reveal-unfold {
+      opacity: 0;
+      transform: perspective(1000px) rotateX(20deg) translateY(50px) scale(0.92);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal-unfold.active {
+      opacity: 1;
+      transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.88) translateY(30px);
+      transition: opacity 0.65s var(--ease-back), transform 0.65s var(--ease-back);
+    }
+    .reveal-zoom.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
 
     footer {
       padding: 32px 0;
@@ -268,12 +321,14 @@
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 680px) {
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-3, .grid-4 { grid-template-columns: 1fr; }
       section { padding: 40px 0; }
     }
   </style>
 </head>
 <body>
+
+  <div class="mouse-glow" id="mouseGlow"></div>
 
   <header>
     <div class="nav-inner">
@@ -292,7 +347,7 @@
           서경대학교 전체 학과 체육대회인 '청야체전' 현장에서 스포츠앤테크놀로지전공 학우들의 생생하고 빛나는 순간을 직접 기록하고 공유하는 종합 미디어 콘텐츠 프로젝트입니다.
         </p>
         
-        <div class="card grid-3">
+        <div class="card grid-3 reveal-unfold">
           <div>
             <div class="info-label">소속 및 동아리</div>
             <div class="info-val">스포츠산업 기획 동아리 SPARK 2기</div>
@@ -314,8 +369,9 @@
       <div class="wrap">
         <h2 class="section-title">메인 콘텐츠 포스터</h2>
         <div class="poster-container">
-          <div class="img-wrap">
-            <img src="./spark.png" alt="청야체전 메인 포스터" onerror="this.onerror=null; this.src='./spark-png.png'; this.onerror=function(){this.src='./spark.jpg'};">
+          <div class="img-wrap reveal-zoom">
+            <!-- 스크린샷과 동일한 정확한 파일명 적용 -->
+            <img src="./spark-png.PNG" alt="청야체전 메인 포스터" onerror="this.onerror=null; this.src='./spark-png.png';">
             <div class="img-caption">[콘텐츠 포스터] SPARK 2기 청야체전 대표 이미지</div>
           </div>
         </div>
@@ -327,7 +383,7 @@
       <div class="wrap">
         <h2 class="section-title">팀별 수행 역할 및 시스템</h2>
         <div class="grid-3">
-          <article class="card">
+          <article class="card reveal-unfold delay-1">
             <div class="info-label">01 / 기획팀 (가이드북 수립)</div>
             <h3 style="color:white; margin: 8px 0 14px;">총괄 가이드라인 제작</h3>
             <ul>
@@ -337,7 +393,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card reveal-unfold delay-2">
             <div class="info-label">02 / 촬영팀 (현장 기록)</div>
             <h3 style="color:white; margin: 8px 0 14px;">선수 일정 픽스 & 프로필 촬영</h3>
             <ul>
@@ -347,7 +403,7 @@
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card reveal-unfold delay-3">
             <div class="info-label">03 / 홍보팀 (실시간 업로드)</div>
             <h3 style="color:white; margin: 8px 0 14px;">템플릿 제작 & 콘텐츠 발행</h3>
             <ul>
@@ -367,20 +423,21 @@
         <p class="subtitle" style="margin-bottom: 24px;">가이드북을 기반으로 템플릿을 제작하여 실시간으로 업로드한 4가지 핵심 콘텐츠입니다.</p>
         
         <div class="grid-4">
-          <div class="img-wrap">
-            <img src="./project-match.png" alt="경기 일정 게시물" onerror="this.onerror=null; this.src='./project-match.jpg';">
+          <!-- 스크린샷과 동일한 대문자 .PNG 파일명 일치 적용 -->
+          <div class="img-wrap reveal-zoom delay-1">
+            <img src="./project-match.PNG" alt="경기 일정 게시물" onerror="this.onerror=null; this.src='./project-match.png';">
             <div class="img-caption">1. project-match<br>(경기 일정)</div>
           </div>
-          <div class="img-wrap">
-            <img src="./project-lineup.png" alt="라인업 소개 게시물" onerror="this.onerror=null; this.src='./project-lineup.jpg';">
+          <div class="img-wrap reveal-zoom delay-2">
+            <img src="./project-lineup.PNG" alt="라인업 소개 게시물" onerror="this.onerror=null; this.src='./project-lineup.png';">
             <div class="img-caption">2. project-lineup<br>(라인업 소개)</div>
           </div>
-          <div class="img-wrap">
-            <img src="./project-result.png" alt="경기 결과 게시물" onerror="this.onerror=null; this.src='./project-result.jpg';">
+          <div class="img-wrap reveal-zoom delay-3">
+            <img src="./project-result.PNG" alt="경기 결과 게시물" onerror="this.onerror=null; this.src='./project-result.png';">
             <div class="img-caption">3. project-result<br>(경기 결과)</div>
           </div>
-          <div class="img-wrap">
-            <img src="./project-mvp.png" alt="MVP 소개 게시물" onerror="this.onerror=null; this.src='./project-mvp.jpg';">
+          <div class="img-wrap reveal-zoom delay-4">
+            <img src="./project-mvp.PNG" alt="MVP 소개 게시물" onerror="this.onerror=null; this.src='./project-mvp.png';">
             <div class="img-caption">4. project-mvp<br>(MVP 소개)</div>
           </div>
         </div>
@@ -390,7 +447,7 @@
     <!-- 활용 역량 -->
     <section>
       <div class="wrap">
-        <div class="card">
+        <div class="card reveal-unfold">
           <h2 class="section-title">핵심 역량 키워드</h2>
           <div>
             <span class="tag">스포츠 이벤트 기획</span>
@@ -412,5 +469,28 @@
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 마우스 은은한 빛 포커스
+      const mouseGlow = document.getElementById('mouseGlow');
+      window.addEventListener('mousemove', (e) => {
+        mouseGlow.style.left = `${e.clientX}px`;
+        mouseGlow.style.top = `${e.clientY}px`;
+      }, { passive: true });
+
+      // 스크롤 애니메이션 옵저버
+      const observerOptions = { root: null, threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal-unfold, .reveal-zoom').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
