@@ -30,6 +30,7 @@
       line-height: 1.65;
       letter-spacing: -.02em;
       overflow-x: hidden;
+      word-break: keep-all; /* 단어가 중간에 잘리지 않고 아담하게 넘어가는 핵심 설정 */
     }
 
     body::before {
@@ -120,14 +121,13 @@
       border-bottom: 1px solid var(--line);
     }
 
-    /* Kicker 간격 여유 조절 */
     .kicker {
       font-size: 12px;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--blue2);
       font-weight: 800;
-      margin-bottom: 16px; /* 문장 간격을 조금 띄워서 깔끔하게 수정 */
+      margin-bottom: 16px;
     }
 
     h1 {
@@ -136,6 +136,7 @@
       letter-spacing: -.03em;
       margin: 0 0 20px;
       font-weight: 850;
+      word-break: keep-all;
     }
 
     .name-en {
@@ -153,6 +154,7 @@
       line-height: 1.2;
       letter-spacing: -.03em;
       margin: 0 0 12px;
+      word-break: keep-all;
     }
 
     h3 {
@@ -161,13 +163,20 @@
       margin: 0 0 10px;
       color: var(--ink);
       font-weight: 700;
+      word-break: keep-all;
     }
 
-    p { color: #c5cedc; margin: 0 0 14px; font-size: 15px; line-height: 1.65; }
+    p { 
+      color: #c5cedc; 
+      margin: 0 0 14px; 
+      font-size: 15px; 
+      line-height: 1.65;
+      word-break: keep-all; /* 문장 잘림 해결 */
+    }
     .muted { color: var(--muted); }
     .blue { color: var(--blue2); }
 
-    /* 히어로 섹션 폭 완전 고정 */
+    /* 히어로 섹션 폭 및 정렬 완전 고정 */
     .hero {
       padding: 60px 0;
       min-height: calc(85vh - var(--nav-height));
@@ -176,11 +185,11 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 270px; /* 좌측 텍스트, 우측 270px 고정 사진 */
+      grid-template-columns: 1fr 270px;
       align-items: center;
       gap: 48px;
       width: 100%;
-      max-width: 1000px; /* 창을 늘려도 간격이 벌어지지 않도록 한계폭 설정 */
+      max-width: 1000px;
       margin: 0 auto;
     }
     .hero .tagline {
@@ -189,6 +198,7 @@
       line-height: 1.6;
       margin-bottom: 28px;
       font-weight: 500;
+      word-break: keep-all;
     }
     .hero-meta {
       display: flex;
@@ -204,6 +214,7 @@
       font-weight: 600;
       color: #c5d2e4;
       background: rgba(16, 22, 34, .7);
+      white-space: nowrap;
     }
     .hero-actions { display: flex; gap: 12px; }
     .btn {
@@ -216,11 +227,12 @@
       font-size: 14px;
       font-weight: 750;
       transition: all .3s ease;
+      white-space: nowrap;
     }
     .btn.primary { background: var(--blue); border-color: var(--blue); color: white; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22,136,255,.25); }
 
-    /* 프로필 영역 (유지) */
+    /* 프로필 상자 */
     .portrait-wrap {
       position: relative;
       width: 100%;
@@ -264,14 +276,14 @@
       pointer-events: none;
     }
 
-    /* 제목 아래 문장 수직 정렬 */
+    /* 헤더 및 문단 너비 조절 */
     .section-head {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
       margin-bottom: 36px;
-      max-width: 800px;
+      max-width: 850px;
     }
 
     .section-head p {
@@ -279,6 +291,7 @@
       line-height: 1.65;
       color: #c5cedc;
       margin: 0;
+      word-break: keep-all; /* 단어 단위 자연스러운 줄바꿈 */
     }
 
     .card {
@@ -315,6 +328,7 @@
       border-radius: 4px;
       color: #e0e8f5;
       background: rgba(255,255,255,.03);
+      white-space: nowrap;
     }
 
     .timeline {
@@ -406,6 +420,7 @@
       border: 1px solid rgba(22,136,255,.25);
       border-radius: 4px;
       color: #d8ecff;
+      white-space: nowrap;
     }
 
     .contact-panel {
