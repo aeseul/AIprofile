@@ -120,30 +120,32 @@
       border-bottom: 1px solid var(--line);
     }
 
+    /* Kicker 간격 여유 조절 */
     .kicker {
       font-size: 12px;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--blue2);
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 16px; /* 문장 간격을 조금 띄워서 깔끔하게 수정 */
     }
 
     h1 {
-      font-size: clamp(36px, 4.2vw, 58px);
-      line-height: 1.1;
-      letter-spacing: -.04em;
-      margin: 12px 0 20px;
+      font-size: clamp(38px, 4.2vw, 56px);
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      margin: 0 0 20px;
       font-weight: 850;
     }
 
     .name-en {
       display: block;
-      font-size: 0.4em;
-      letter-spacing: 0.08em;
+      font-size: 14px;
+      letter-spacing: 0.12em;
       color: var(--blue2);
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
     }
 
     h2 {
@@ -165,7 +167,7 @@
     .muted { color: var(--muted); }
     .blue { color: var(--blue2); }
 
-    /* 히어로 섹션 */
+    /* 히어로 섹션 폭 완전 고정 */
     .hero {
       padding: 60px 0;
       min-height: calc(85vh - var(--nav-height));
@@ -174,16 +176,19 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 270px;
+      grid-template-columns: 1fr 270px; /* 좌측 텍스트, 우측 270px 고정 사진 */
       align-items: center;
       gap: 48px;
       width: 100%;
+      max-width: 1000px; /* 창을 늘려도 간격이 벌어지지 않도록 한계폭 설정 */
+      margin: 0 auto;
     }
     .hero .tagline {
-      font-size: clamp(15px, 1.6vw, 19px);
+      font-size: clamp(15px, 1.6vw, 18px);
       color: #dbe4f2;
       line-height: 1.6;
       margin-bottom: 28px;
+      font-weight: 500;
     }
     .hero-meta {
       display: flex;
@@ -215,7 +220,7 @@
     .btn.primary { background: var(--blue); border-color: var(--blue); color: white; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22,136,255,.25); }
 
-    /* 프로필 영역 */
+    /* 프로필 영역 (유지) */
     .portrait-wrap {
       position: relative;
       width: 100%;
@@ -259,16 +264,14 @@
       pointer-events: none;
     }
 
-    /* =========================================================
-       [수정 완료] 제목 아래에 문장이 정직하게 배치되는 헤더 레이아웃
-       ========================================================= */
+    /* 제목 아래 문장 수직 정렬 */
     .section-head {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
       margin-bottom: 36px;
-      max-width: 800px; /* 가독성을 위한 문장 길이 고정 */
+      max-width: 800px;
     }
 
     .section-head p {
@@ -491,8 +494,11 @@
       <div class="wrap hero-grid">
         <div>
           <div class="kicker">Sports Industry · Planning · Marketing</div>
-          <h1><span class="name-en">JANG AE SEUL</span>장애슬</h1>
-          <p class="tagline">스포츠산업 꿈나무 장애슬, 생각을 행동으로 옮기며 스포츠산업의 기회를 직접 만들어가고 있습니다.</p>
+          <h1>
+            <span class="name-en">JANG AE SEUL</span>
+            장애슬
+          </h1>
+          <p class="tagline">생각을 행동으로 옮기며 스포츠산업의 가치를 만들어가는 기획자 장애슬입니다.</p>
           <div class="hero-meta">
             <span class="pill">서경대학교</span>
             <span class="pill">스포츠앤테크놀로지전공</span>
