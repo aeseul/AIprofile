@@ -441,22 +441,22 @@
     /* 카드 하단 여백을 디자인적으로 가득 채워주는 배경 로고 */
     .arcteryx-bg-logo {
       position: absolute;
-      right: -10px;
-      bottom: -15px;
-      width: 220px;
-      height: 140px;
+      right: 12px;
+      bottom: 12px;
+      width: 180px;
+      height: 110px;
       object-fit: contain;
-      opacity: 0.18;
+      opacity: 0.35;
       filter: drop-shadow(0 0 12px rgba(78, 182, 255, 0.6)) brightness(1.2);
       pointer-events: none;
       transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
       z-index: 1;
-      border-radius: 12px;
+      border-radius: 8px;
     }
 
     .card.brand-highlight:hover .arcteryx-bg-logo {
-      opacity: 0.35;
-      transform: scale(1.08) rotate(-3deg);
+      opacity: 0.6;
+      transform: scale(1.05) rotate(-2deg);
       filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8)) brightness(1.4);
     }
 
@@ -878,7 +878,7 @@
         </div>
 
         <div class="experience-grid">
-          <!-- ★ 핵심 아크테릭스 브랜드 경험 카드 (+ 하단 로고 배경 워터마크 디자인) ★ -->
+          <!-- ★ 핵심 아크테릭스 브랜드 경험 카드 (+ 로고 이미지 수정) ★ -->
           <article class="card brand-highlight reveal-unfold delay-1">
             <div class="brand-content">
               <div class="card-no">FEATURED BRAND EXPERIENCE</div>
@@ -895,8 +895,8 @@
               </div>
             </div>
 
-            <!-- 하단 여백을 세련되게 채워주는 은은한 워터마크 로고 -->
-            <img class="arcteryx-bg-logo" src="./아크테릭스.jpeg" alt="아크테릭스 브랜드 로고" onerror="this.onerror=null; this.src='./아크테릭스.jpg';">
+            <!-- ak-logo.jpeg 이미지 적용 및 로드 오류 방지 처리 -->
+            <img class="arcteryx-bg-logo" src="./ak-logo.jpeg" alt="아크테릭스 브랜드 로고" onerror="this.onerror=null; this.src='ak-logo.jpeg';">
           </article>
 
           <!-- 아르바이트 경력 4종 -->
