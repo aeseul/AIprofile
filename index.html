@@ -15,7 +15,7 @@
       --blue: #1688ff;
       --blue2: #4eb6ff;
       --line: rgba(180, 202, 236, .2);
-      --site-max: 1100px; /* 전체 컨테이너 정렬 폭 통일 */
+      --site-max: 1100px;
       --nav-height: 76px;
       --ease: cubic-bezier(.2,.75,.25,1);
     }
@@ -47,7 +47,7 @@
     button { font: inherit; cursor: pointer; }
     ::selection { background: var(--blue); color: white; }
 
-    /* Header — 본문 영역과 동일 수직 라인 정렬 */
+    /* Header */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -165,9 +165,7 @@
     .muted { color: var(--muted); }
     .blue { color: var(--blue2); }
 
-    /* =========================================================
-       [수정] 상단-본문 레이아웃 수직 라인 통일 & 프로필 축소
-       ========================================================= */
+    /* 히어로 그리드 구조 */
     .hero {
       padding: 60px 0;
       min-height: calc(85vh - var(--nav-height));
@@ -176,7 +174,7 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 270px; /* 프로필 사진 너비를 270px로 축소 및 고정 */
+      grid-template-columns: 1fr 270px;
       align-items: center;
       gap: 48px;
       width: 100%;
@@ -217,44 +215,50 @@
     .btn.primary { background: var(--blue); border-color: var(--blue); color: white; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22,136,255,.25); }
 
-    /* 프로필 상자 스케일 최적화 */
+    /* =========================================================
+       [수정 완료] 프로필 이미지 곡선 잘림 + 네온 테두리 적용
+       ========================================================= */
     .portrait-wrap {
       position: relative;
       width: 100%;
-      max-width: 270px; /* 사진 박스 크기 축소 */
+      max-width: 270px;
       justify-self: end;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--line);
+      border-radius: 16px; /* 부드럽고 매끄러운 곡선 */
+      overflow: hidden;   /* 사진이 곡선을 이탈하지 않고 매끄럽게 잘리도록 설정 */
+      border: 1.5px solid rgba(78, 182, 255, 0.5); /* 선명한 은은한 테두리 */
       background: #151d2a;
-      box-shadow: 0 16px 36px rgba(0,0,0,.4);
-      isolation: isolate;
+      box-shadow: 
+        0 0 25px rgba(22, 136, 255, 0.35), /* 네온 블루 빛 효과 */
+        0 16px 36px rgba(0, 0, 0, 0.6);
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .portrait-wrap:before {
-      content: "";
-      position: absolute;
-      inset: -10px;
-      border: 1px solid rgba(48,151,255,.35);
-      border-radius: 14px;
-      z-index: -1;
-      pointer-events: none;
+
+    .portrait-wrap:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0 0 35px rgba(56, 189, 248, 0.55),
+        0 20px 40px rgba(0, 0, 0, 0.7);
     }
+
     .portrait {
       width: 100%;
-      height: auto;
-      max-height: 380px;
-      object-fit: cover;
+      height: 100%;
       display: block;
+      border-radius: inherit; /* 부모 곡선에 완전히 밀착 */
+      object-fit: cover;
+      object-position: center 20%;
     }
+
     .portrait-label {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      padding: 20px 14px 10px;
-      background: linear-gradient(transparent, rgba(3,7,14,.92));
+      padding: 24px 14px 12px;
+      background: linear-gradient(transparent, rgba(3, 7, 14, 0.95));
       font-size: 10px;
       letter-spacing: .15em;
       color: white;
       font-weight: 700;
+      pointer-events: none;
     }
 
     /* 카드 레이아웃 */
