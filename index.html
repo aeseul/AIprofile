@@ -421,11 +421,43 @@
       opacity: 1;
     }
 
-    /* 아크테릭스 브랜드 강조 카드 */
+    /* ★ 아크테릭스 브랜드 디자인 카드 & 배경 로고 오버레이 ★ */
     .card.brand-highlight {
       background: linear-gradient(145deg, rgba(28, 43, 68, 0.95), rgba(13, 20, 32, 0.9));
       border: 1.5px solid rgba(78, 182, 255, 0.5);
       box-shadow: 0 0 25px rgba(22, 136, 255, 0.18);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 카드 하단 여백을 디자인적으로 가득 채워주는 배경 로고 */
+    .arcteryx-bg-logo {
+      position: absolute;
+      right: -10px;
+      bottom: -15px;
+      width: 220px;
+      height: 140px;
+      object-fit: contain;
+      opacity: 0.18;
+      filter: drop-shadow(0 0 12px rgba(78, 182, 255, 0.6)) brightness(1.2);
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+      z-index: 1;
+      border-radius: 12px;
+    }
+
+    .card.brand-highlight:hover .arcteryx-bg-logo {
+      opacity: 0.35;
+      transform: scale(1.08) rotate(-3deg);
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8)) brightness(1.4);
     }
 
     .intro-grid, .skills-grid {
@@ -460,7 +492,7 @@
       color: white;
     }
 
-    /* 경력 그리드 & 아크테릭스 메인 상단 배치 */
+    /* 경력 그리드 */
     .experience-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
@@ -554,7 +586,7 @@
       display: none;
     }
 
-    /* 3대 핵심 프로젝트 숏컷 패널 (중복 해결) */
+    /* 3대 핵심 프로젝트 숏컷 패널 */
     .project-shortcut-panel {
       background: linear-gradient(135deg, rgba(22, 136, 255, 0.1), rgba(8, 11, 18, 0.8));
       border: 1px solid rgba(78, 182, 255, 0.3);
@@ -846,20 +878,25 @@
         </div>
 
         <div class="experience-grid">
-          <!-- 핵심 아크테릭스 브랜드 경험 카드 -->
+          <!-- ★ 핵심 아크테릭스 브랜드 경험 카드 (+ 하단 로고 배경 워터마크 디자인) ★ -->
           <article class="card brand-highlight reveal-unfold delay-1">
-            <div class="card-no">FEATURED BRAND EXPERIENCE</div>
-            <h3 style="font-size: 20px; color: white; margin-bottom: 4px;">아크테릭스 (Arc'teryx)</h3>
-            <p class="blue" style="font-weight: 700; margin-bottom: 12px;">스포츠 브랜드 MD · VMD 실무 경험 (단기 3개월 계약)</p>
-            <p style="font-size: 14px; line-height: 1.6;">
-              실제 스포츠 브랜드 현장을 직접 경험해보고자 도전한 3개월 계약직 근무. 데이터 기반의 실무 역량을 익혔습니다.
-            </p>
-            <div class="interest-list" style="margin-top: 16px;">
-              <span class="tag">MD · VMD 데이터 작업</span>
-              <span class="tag">예산 전산 처리</span>
-              <span class="tag">판매 및 매출 집계</span>
-              <span class="tag">성과 보고서 작성</span>
+            <div class="brand-content">
+              <div class="card-no">FEATURED BRAND EXPERIENCE</div>
+              <h3 style="font-size: 20px; color: white; margin-bottom: 4px;">아크테릭스 (Arc'teryx)</h3>
+              <p class="blue" style="font-weight: 700; margin-bottom: 12px;">스포츠 브랜드 MD · VMD 실무 경험 (단기 3개월 계약)</p>
+              <p style="font-size: 14px; line-height: 1.6;">
+                실제 스포츠 브랜드 현장을 직접 경험해보고자 도전한 3개월 계약직 근무. 데이터 기반의 실무 역량을 익혔습니다.
+              </p>
+              <div class="interest-list" style="margin-top: 18px;">
+                <span class="tag">MD · VMD 데이터 작업</span>
+                <span class="tag">예산 전산 처리</span>
+                <span class="tag">판매 및 매출 집계</span>
+                <span class="tag">성과 보고서 작성</span>
+              </div>
             </div>
+
+            <!-- 하단 여백을 세련되게 채워주는 은은한 워터마크 로고 -->
+            <img class="arcteryx-bg-logo" src="./아크테릭스.jpeg" alt="아크테릭스 브랜드 로고" onerror="this.onerror=null; this.src='./아크테릭스.jpg';">
           </article>
 
           <!-- 아르바이트 경력 4종 -->
@@ -919,7 +956,7 @@
           <p>구단 산학협력, 기획 동아리, 스포츠 현장 봉사 및 지도 경험까지 다채로운 실무와 연계 활동을 쌓아왔습니다.</p>
         </div>
 
-        <!-- 3대 메인 프로젝트 숏컷 (중복 방지 및 정돈) -->
+        <!-- 3대 메인 프로젝트 숏컷 -->
         <div class="project-shortcut-panel reveal-slide-up">
           <div class="shortcut-item">
             <div>
@@ -956,7 +993,6 @@
         </div>
 
         <div class="activity-grid">
-          <!-- 구단 및 산학 -->
           <article class="activity reveal-unfold delay-1" data-category="club">
             <div class="card-no">01 / COMPETITION</div>
             <h3>2025 캡스톤 디자인 경진대회</h3>
