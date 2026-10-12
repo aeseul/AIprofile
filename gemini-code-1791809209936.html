@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="장애슬 | 서경대학교 스포츠앤테크놀로지전공 | 스포츠산업 포트폴리오">
+  <title>장애슬 — 스포츠산업 포트폴리오</title>
+  <style>
+    :root {
+      --bg: #080b12;
+      --panel: #101622;
+      --panel-hover: #151e30;
+      --ink: #f5f7fb;
+      --muted: #a5afc1;
+      --blue: #1688ff;
+      --blue2: #4eb6ff;
+      --line: rgba(180, 202, 236, .16);
+      --max: 1160px;
+      --nav-height: 70px;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+    
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.65;
+      letter-spacing: -.02em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background: 
+        radial-gradient(ellipse at 88% 4%, rgba(0, 105, 255, .15), transparent 32%),
+        radial-gradient(ellipse at 5% 55%, rgba(0, 105, 255, .08), transparent 34%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    ::selection { background: var(--blue); color: white; }
+
+    /* 고정 상단 내비게이션 (Fixed Navigation Bar) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      background: rgba(8, 11, 18, .88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .nav-inner {
+      width: min(var(--max), calc(100% - 48px));
+      height: 100%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+    .wordmark small {
+      display: block;
+      color: var(--blue2);
+      font-size: 9px;
+      letter-spacing: .18em;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color .25s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+      transition: width .3s var(--ease);
+    }
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    /* 공통 섹션 레이아웃 */
+    main { padding-top: var(--nav-height); }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: auto; }
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 90px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      margin: 12px 0 20px;
+      font-weight: 850;
+    }
+
+    .name-en {
+      display: block;
+      font-size: 0.38em;
+      letter-spacing: 0.08em;
+      color: var(--blue2);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -.04em;
+      margin: 0 0 16px;
+    }
+
+    h3 {
+      font-size: 18px;
+      letter-spacing: -.02em;
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+
+    p { color: #c5cedc; margin: 0 0 12px; font-size: 14px; }
+    .muted { color: var(--muted); }
+    .blue { color: var(--blue2); }
+
+    /* 히어로 섹션 */
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .hero .tagline {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: #dbe4f2;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 11px;
+      color: #c5d2e4;
+      background: rgba(16, 22, 34, .6);
+    }
+    .hero-actions { display: flex; gap: 12px; }
